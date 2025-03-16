@@ -30,19 +30,19 @@ class _PatientSignInScreenState extends State<WelcomeScreen> {
 
   void _signIn() {
     if (_formKey.currentState!.validate()) {
-      // Simulate loading
+      
       setState(() {
         _isLoading = true;
       });
       
-      // Simulate authentication delay
+      
       Future.delayed(const Duration(seconds: 2), () {
         if (mounted) {
           setState(() {
             _isLoading = false;
           });
           
-          // Show success message
+          
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(content: Text('Sign in successful!')),
           );
@@ -207,7 +207,7 @@ class _PatientSignInScreenState extends State<WelcomeScreen> {
                             const SizedBox(height: 15),
                           ],
                         ),
-                  
+                        
                         // Remember Me and Forgot Password row
                         Padding(
                           padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
