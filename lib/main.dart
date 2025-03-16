@@ -16,9 +16,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});  // Remove const from constructor
-
-  // Define the controllers
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
