@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:soul_support/main.dart';
+import 'package:soul_support/screens/therapistProfileScreen.dart';
+import 'package:soul_support/transitions/custom_transitions.dart';
 import 'package:soul_support/widgets/availableTherapistsCard.dart';
 import 'package:soul_support/widgets/dock.dart';
+import 'package:soul_support/widgets/screenWrapper.dart';
 
 class TherapistScreen extends StatefulWidget {
   const TherapistScreen({super.key});
@@ -139,7 +142,7 @@ class _TherapistScreenState extends State<TherapistScreen> {
             
                         ),
                         child: AvailabletherapistsCard(
-                          name: 'Dr. Ethar Ayman',
+                          name: 'Dr.  Jae Yong',
                           time: 'Today, 08:00 : 12:00 ',
                           height: 110,
                           width: double.infinity,

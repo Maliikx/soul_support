@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'dart:ui'; // Important for ImageFilter.blur
+import 'dart:ui';
+
+import 'package:soul_support/widgets/exitBtn.dart'; // Important for ImageFilter.blur
 
 
 // Slide transition
@@ -96,6 +98,58 @@ Route halfSlideBtT(Widget page) {
             position: offsetAnimation,
             child: ClipRRect(
               borderRadius: BorderRadius.vertical(top: Radius.circular(50)),
+              child: child,
+            ),
+          ),
+        ],
+      );
+    },
+  );
+}
+
+Route partialSlideBtT(Widget page) {
+  return PageRouteBuilder(
+    opaque: false,
+    barrierColor: Colors.transparent, // No default barrier color
+    pageBuilder: (context, animation, secondaryAnimation) => page,
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      const begin = Offset(0, 1.0);
+      const end = Offset(0, 0.1);
+      const curve = Curves.easeInOut;
+
+      var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+      var offsetAnimation = animation.drive(tween);
+
+      // Use animation value to gradually apply blur + fade
+      return Stack(
+        children: [
+          // Animated blur background
+          AnimatedBuilder(
+            animation: animation,
+            builder: (context, child) {
+             final blurValue = (animation.value * 10).clamp(0, 3.5).toDouble();
+             final opacity = (animation.value * 0.5).clamp(0, 0.2).toDouble();
+
+
+              return Stack(
+                children: [
+                  BackdropFilter(
+                    filter: ImageFilter.blur(sigmaX: blurValue, sigmaY: blurValue),
+                    child: Container(
+                      color: Colors.black.withOpacity(opacity), // Fades in softly
+                    ),
+                  ),
+                  Exitbtn()
+                ],
+              );
+            },
+          ),
+
+          // Sliding panel
+          SlideTransition(
+            position: offsetAnimation,
+            child: ClipRRect(
+              borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
               child: child,
             ),
           ),

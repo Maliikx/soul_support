@@ -2,7 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:soul_support/main.dart';
+import 'package:soul_support/screens/journalScreen.dart';
+import 'package:soul_support/transitions/custom_transitions.dart';
 import 'package:soul_support/widgets/exitBtn.dart';
+import 'package:soul_support/widgets/screenWrapper.dart';
 
 class profile_screen extends StatefulWidget {
   const profile_screen({super.key});
@@ -190,7 +193,7 @@ class _profile_screenState extends State<profile_screen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "New journal record",
+                    "New records",
                     style: TextStyle(
                       color: Color(0xff374957),
                       fontSize: 18,
@@ -230,29 +233,36 @@ class _profile_screenState extends State<profile_screen> {
                            ),
                          ),
                          // Second item: Diary record
-                         Container(
-                           decoration: BoxDecoration(
-                             borderRadius: BorderRadius.circular(35),
-                             color: const Color(0xffFFFFFF),
-                           ),
-                           width: 130,
-                           height: 130,
-                           padding: EdgeInsets.symmetric(vertical: 10),
-                           child: Column(
-                             mainAxisAlignment: MainAxisAlignment.spaceAround,
-                             children: [
-                               Container(
-                                 height: 55,
-                                 child: Image(image: AssetImage("assets/imgs/paper.png"))),
-                               Text(
-                                 "Diary records",
-                                 style: TextStyle(
-                                   color: Color(0xff374957),
-                                   fontSize: 14,
-                                   fontWeight: FontWeight.w400,
+                         GestureDetector(
+                          onTap: () {
+                            Navigator.push(context, 
+                            fadeTransition(ScreenWrapper(child: JournalScreen()))
+                            );
+                          },
+                           child: Container(
+                             decoration: BoxDecoration(
+                               borderRadius: BorderRadius.circular(35),
+                               color: const Color(0xffFFFFFF),
+                             ),
+                             width: 130,
+                             height: 130,
+                             padding: EdgeInsets.symmetric(vertical: 10),
+                             child: Column(
+                               mainAxisAlignment: MainAxisAlignment.spaceAround,
+                               children: [
+                                 Container(
+                                   height: 55,
+                                   child: Image(image: AssetImage("assets/imgs/paper.png"))),
+                                 Text(
+                                   "Journal records",
+                                   style: TextStyle(
+                                     color: Color(0xff374957),
+                                     fontSize: 14,
+                                     fontWeight: FontWeight.w400,
+                                   ),
                                  ),
-                               ),
-                             ],
+                               ],
+                             ),
                            ),
                          ),
                          // Third item: Meditation

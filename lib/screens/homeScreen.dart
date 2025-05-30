@@ -160,7 +160,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           width: 20,
                          ),
                          AvailabletherapistsCard(
-                          name: 'Dr. Mark Williams', 
+                          name: 'Dr. Jae Yong', 
                           time: 'Today, 08:00 : 12:00 ', 
                           height: 110,
                           width: 280,
@@ -226,7 +226,8 @@ class _HomeScreenState extends State<HomeScreen> {
                          width: 240,
                                             
                          decoration: BoxDecoration(
-                           boxShadow: [BoxShadow(color: Colors.black.withAlpha(70), 
+                           boxShadow: [
+                            BoxShadow(color: Colors.black.withAlpha(70), 
                            spreadRadius: 0,
                            blurRadius: 4,
                            offset: Offset(0 , 4)
