@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:soul_support/main.dart';
+import 'package:soul_support/screens/communityScreen.dart';
 import 'package:soul_support/screens/documentationScreen.dart';
 import 'package:soul_support/screens/therapistScreen.dart';
 import 'package:soul_support/transitions/custom_transitions.dart';
@@ -112,7 +113,10 @@ class _HomeScreenState extends State<HomeScreen> {
                           width: 20,
                         ),
                         HeaderCard(height: 140, width: 165, text: 'Community',
-                         onTap: () => {}, 
+                         onTap: () => {
+                          Navigator.push(context, 
+                     slideBtT(ScreenWrapper(child: const CommunityScreen())))
+                         }, 
                          imgPath: 'assets/imgs/community.jpeg'),
                       ],
                     ),
