@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:soul_support/screens/Patient%20Registeration%20and%20Login%20Pages/Patient_Registeration_Options.dart';
 import 'package:soul_support/screens/Patient%20Registeration%20and%20Login%20Pages/User_Options.dart';
 import 'package:soul_support/screens/Patient%20Registeration%20and%20Login%20Pages/patient_sign_In.dart';
@@ -20,11 +21,15 @@ import 'package:soul_support/widgets/screenWrapper.dart';
    const Color bigCircle = Color(0xff3D8BAA);
    const Color smallCircle = Color(0xFF579EB8);
    const Color banners = Color.fromARGB(255, 243, 248, 250);
+   const String notesBoxKey = 'Notes_box';
    
    
 
 
-void main() {
+void main() async{
+  await Hive.initFlutter();
+
+  await Hive.openBox(notesBoxKey);
 WidgetsFlutterBinding.ensureInitialized(); // Make sure Flutter is ready
 // SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: [SystemUiOverlay.bottom]);
   
