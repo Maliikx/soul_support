@@ -17,6 +17,9 @@ class _PatientSignUpScreenState extends State<PatientSignUpScreen> {
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _confirmPasswordController = TextEditingController();
   final String _countryCode = '+20';
+  String? _selectedGender;
+  final List<String> _genderOptions = ['Male', 'Female'];
+
 
   bool _obscureText = true;
   bool _obscureConfirmText = true;
@@ -54,58 +57,58 @@ class _PatientSignUpScreenState extends State<PatientSignUpScreen> {
           constraints: BoxConstraints(
             minHeight: screenHeight,
           ),
-          child: 
-          
+          child:
+
           Stack(
             children: [
               Positioned(
-              top: -450,
-              left: 60,
-              child: Transform.rotate(
-                angle: -0.2,
-                child: Container(
-                  width: 720,
-                  height: 750,
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(colors: [const Color.fromARGB(195, 151, 202, 219), const Color.fromARGB(0, 151, 202, 219)],
-                         begin: Alignment.topCenter,
-                         end: Alignment.bottomCenter,
-                         stops: [0.5, 1],
-                         ),
+                  top: -450,
+                  left: 60,
+                  child: Transform.rotate(
+                    angle: -0.2,
+                    child: Container(
+                      width: 720,
+                      height: 750,
+                      decoration: BoxDecoration(
+                          gradient: LinearGradient(colors: [const Color.fromARGB(195, 151, 202, 219), const Color.fromARGB(0, 151, 202, 219)],
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                            stops: [0.5, 1],
+                          ),
                           shape: BoxShape.circle
-                              ),
-                        ),
-              )
+                      ),
+                    ),
+                  )
               ),
-               Positioned(
-                left: 30,
-              top: 190,
-              child: Transform.rotate(
-                angle: 0,
-                child: Container(
-                  width: MediaQuery.of(context).size.width+100,
-                  height: 900,
-                decoration: BoxDecoration(
-                              color: Color(0xff67A7BE),
-                              borderRadius: BorderRadius.circular(120),
-                              boxShadow: [BoxShadow(color: Color.fromARGB(148, 133, 186, 206),
-                           spreadRadius: 30,
-                           blurRadius: 0,
-                           offset: Offset(0 ,0)
-                           )],
-                              ),
-                              
-                        ),
-              )
+              Positioned(
+                  left: 30,
+                  top: 190,
+                  child: Transform.rotate(
+                    angle: 0,
+                    child: Container(
+                      width: MediaQuery.of(context).size.width+100,
+                      height: 900,
+                      decoration: BoxDecoration(
+                        color: Color(0xff67A7BE),
+                        borderRadius: BorderRadius.circular(120),
+                        boxShadow: [BoxShadow(color: Color.fromARGB(148, 133, 186, 206),
+                            spreadRadius: 30,
+                            blurRadius: 0,
+                            offset: Offset(0 ,0)
+                        )],
+                      ),
+
+                    ),
+                  )
               ),
               Positioned(
                 top: screenHeight*0.045,
                 left: 125,
                 child: Container(
-                height: 110,
-                child: Image.asset("assets/logos/bigLogo.png")
+                    height: 110,
+                    child: Image.asset("assets/logos/bigLogo.png")
                 ),
-                ),
+              ),
               Padding(
                 padding: EdgeInsets.only(top: screenHeight * 0.20),
                 child: Column(
@@ -122,7 +125,7 @@ class _PatientSignUpScreenState extends State<PatientSignUpScreen> {
                         ),
                       ),
                     ),
-              
+
                     // Form
                     Form(
                       key: _formKey,
@@ -160,7 +163,7 @@ class _PatientSignUpScreenState extends State<PatientSignUpScreen> {
                               const SizedBox(height: 15),
                             ],
                           ),
-                                  
+
                           // Email field
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -196,7 +199,7 @@ class _PatientSignUpScreenState extends State<PatientSignUpScreen> {
                               const SizedBox(height: 15),
                             ],
                           ),
-                                  
+
                           // Phone field
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -228,21 +231,21 @@ class _PatientSignUpScreenState extends State<PatientSignUpScreen> {
                                     if (value == null || value.isEmpty) {
                                       return 'Please enter your phone number';
                                     }
-                                  
+
                                     // Remove any non-digit characters
                                     String phoneNumber = value.replaceAll(RegExp(r'[^\d]'), '');
-                                  
+
                                     // Remove leading zero if present
                                     if (phoneNumber.startsWith('0')) {
                                       phoneNumber = phoneNumber.substring(1);
                                     }
-                                  
+
                                     // Egyptian phone number validation (must start with 10, 11, 12, or 15 and be 10 digits)
                                     RegExp egyptianPhoneRegex = RegExp(r'^1[0125][0-9]{8}$');
                                     if (!egyptianPhoneRegex.hasMatch(phoneNumber)) {
                                       return 'Please enter a valid phone number';
                                     }
-                                  
+
                                     return null;
                                   },
                                   onChanged: (value) {
@@ -259,7 +262,7 @@ class _PatientSignUpScreenState extends State<PatientSignUpScreen> {
                               const SizedBox(height: 15),
                             ],
                           ),
-                                  
+
                           // Password field
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -309,7 +312,7 @@ class _PatientSignUpScreenState extends State<PatientSignUpScreen> {
                               const SizedBox(height: 15),
                             ],
                           ),
-                                  
+
                           // Confirm Password field
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -359,7 +362,46 @@ class _PatientSignUpScreenState extends State<PatientSignUpScreen> {
                               const SizedBox(height: 15),
                             ],
                           ),
-                                  
+                          // Gender field
+                          Padding(
+                            padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 20.0, bottom: 5),
+                                  child: Text("Gender", style: labelStyle),
+                                ),
+                                DropdownButtonFormField<String>(
+                                  value: _selectedGender,
+                                  decoration: InputDecoration(
+                                    filled: true,
+                                    fillColor: _textColor,
+                                    contentPadding: const EdgeInsets.symmetric(vertical: 12, horizontal: 15),
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(50),
+                                      borderSide: BorderSide.none,
+                                    ),
+                                  ),
+                                  items: _genderOptions.map((gender) {
+                                    return DropdownMenuItem(
+                                      value: gender,
+                                      child: Text(gender),
+                                    );
+                                  }).toList(),
+                                  onChanged: (value) {
+                                    setState(() {
+                                      _selectedGender = value;
+                                    });
+                                  },
+                                  validator: (value) => value == null ? 'Please select your gender' : null,
+                                ),
+                              ],
+                            ),
+                          ),
+                          const SizedBox(height: 20),
+
+
                           // Terms and Conditions checkbox
                           Container(
                             padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
@@ -383,48 +425,48 @@ class _PatientSignUpScreenState extends State<PatientSignUpScreen> {
                               ],
                             ),
                           ),
-                                  
+
                           // Sign Up Button
                           Padding(
-                            padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
-                            child: SizedBox(
-                              width: double.infinity,
-                              child: ElevatedButton(
-                                onPressed: () {
-                                  if (_formKey.currentState!.validate()) {
-                                    // Only proceed if the form is valid
-                                    String fullPhoneNumber = _countryCode + _phoneController.text.replaceAll(RegExp(r'[^\d]'), '');
-                                  
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => VerificationChoiceScreen(
-                                          email: _emailController.text,
-                                          phoneNumber: fullPhoneNumber,
-                                          name: _nameController.text,
-                                          password: _passwordController.text,
-                                          gender: 'Male',
-                                        ),
+                              padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
+                              child: SizedBox(
+                                  width: double.infinity,
+                                  child: ElevatedButton(
+                                    onPressed: () {
+                                      if (_formKey.currentState!.validate()) {
+                                        // Only proceed if the form is valid
+                                        String fullPhoneNumber = _countryCode + _phoneController.text.replaceAll(RegExp(r'[^\d]'), '');
+
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) => VerificationChoiceScreen(
+                                              email: _emailController.text,
+                                              phoneNumber: fullPhoneNumber,
+                                              name: _nameController.text,
+                                              password: _passwordController.text,
+                                              gender: _selectedGender!,
+                                            ),
+                                          ),
+                                        );
+                                      }
+                                    },
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor: _primaryColor, // Changed from 'primary' to 'backgroundColor'
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(30),
                                       ),
-                                    );
-                                  }
-                                },
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: _primaryColor, // Changed from 'primary' to 'backgroundColor'
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(30),
-                                  ),
-                                ),
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(vertical: 15),
-                                  child: Text(
-                                    "Sign Up",
-                                    style: TextStyle(fontSize: 18, color: _whiteColor),
-                                  ),
-                                ),
-                              )
-                            ))
-                              ],
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(vertical: 15),
+                                      child: Text(
+                                        "Sign Up",
+                                        style: TextStyle(fontSize: 18, color: _whiteColor),
+                                      ),
+                                    ),
+                                  )
+                              ))
+                        ],
                       ),
                     ),
                   ],
