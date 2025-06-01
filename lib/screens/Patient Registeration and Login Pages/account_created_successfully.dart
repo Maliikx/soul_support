@@ -22,7 +22,7 @@ class AccountCreatedSuccessfully extends StatelessWidget {
             height: screenHeight,
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage("assets/images/account-creation.png"),
+                image: AssetImage("assets/imgs/account-creation.png"),
                 fit: BoxFit.cover,
               ),
             ),
