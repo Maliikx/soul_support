@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:soul_support/data/note_model.dart';
 import 'package:soul_support/screens/Patient%20Registeration%20and%20Login%20Pages/Patient_Registeration_Options.dart';
 import 'package:soul_support/screens/Patient%20Registeration%20and%20Login%20Pages/User_Options.dart';
 import 'package:soul_support/screens/Patient%20Registeration%20and%20Login%20Pages/patient_sign_In.dart';
@@ -15,8 +14,6 @@ import 'package:soul_support/screens/programScreen.dart';
 import 'package:soul_support/screens/therapistScreen.dart';
 import 'package:soul_support/widgets/dock.dart';
 import 'package:soul_support/widgets/screenWrapper.dart';
-import 'package:hive_flutter/hive_flutter.dart';
-
    const Color primary = Color(0xFF01709A);
    const Color accent = Color(0xFF97CADB);
    const Color background = Color(0xFFD6E8EE);
@@ -27,16 +24,10 @@ import 'package:hive_flutter/hive_flutter.dart';
    
 
 
-void main() async{
+void main() {
 WidgetsFlutterBinding.ensureInitialized(); // Make sure Flutter is ready
 // SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: [SystemUiOverlay.bottom]);
-   WidgetsFlutterBinding.ensureInitialized();
-
-  await Hive.initFlutter();
-  Hive.registerAdapter(NoteAdapter()); // Register your Note adapter
-
-  await Hive.openBox<Note>('notesBox'); // Open a box to store notes
-
+  
   
   runApp(const MyApp());
 }
