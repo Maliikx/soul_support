@@ -5,6 +5,7 @@ import 'package:soul_support/transitions/custom_transitions.dart';
 import 'package:soul_support/widgets/exitBtn.dart';
 import 'package:soul_support/widgets/note.dart';
 
+
 class JournalScreen extends StatefulWidget {
   const JournalScreen({super.key});
 
@@ -154,8 +155,9 @@ class _JournalScreenState extends State<JournalScreen> {
                 foregroundColor: Colors.white,
                 shape: CircleBorder(),
                 
-                  onPressed: 
-                  addNote,
+                  onPressed: addNote,
+
+
                   child: Icon(Icons.add_circle_outline,size: 45,),
                 ),
        ),

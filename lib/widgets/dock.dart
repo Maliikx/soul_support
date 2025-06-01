@@ -41,12 +41,24 @@ class Dock extends StatefulWidget {
 
         );
         case 5:
-          Navigator.push(
-            context,
-            halfSlideBtT(
-              MoodLoggerScreen(),
-            ),
-          );
+          // Navigator.push(
+          //   context,
+          //   halfSlideBtT(
+          //     MoodLoggerScreen(),
+          //   ),
+          // );
+          showModalBottomSheet(
+            backgroundColor: Colors.transparent,
+                isScrollControlled: true,
+
+            context: context, 
+            builder: (context){
+              return FractionallySizedBox(
+                heightFactor: 0.75,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.vertical(top: Radius.circular(50)),
+                  child: MoodLoggerScreen()));
+            });
         break;
     }
   }
