@@ -84,7 +84,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
               height: screenHeight,
               decoration: const BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage("assets/images/verification2.png"),
+                  image: AssetImage("assets/imgs/verification2.png"),
                   fit: BoxFit.fill,
                 ),
               ),
