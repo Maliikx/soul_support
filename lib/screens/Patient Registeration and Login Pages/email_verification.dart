@@ -87,7 +87,7 @@ class _VerificationScreenState extends State<EmailVerificationScreen> {
     });
 
     try {
-      final url = Uri.parse("http://192.168.23.152:3000/patient/resend-otp");
+      final url = Uri.parse("http://192.168.124.134:3000/patient/resend-otp");
       final response = await http.post(
         url,
         headers: {"Content-Type": "application/json"},
@@ -144,7 +144,7 @@ class _VerificationScreenState extends State<EmailVerificationScreen> {
     });
 
     try {
-      final url = Uri.parse("http://192.168.23.152:3000/patient/verify-otp");
+      final url = Uri.parse("http://192.168.124.134:3000/patient/verify-otp");
       final response = await http.post(
         url,
         headers: {"Content-Type": "application/json"},
@@ -215,7 +215,7 @@ class _VerificationScreenState extends State<EmailVerificationScreen> {
           height: MediaQuery.of(context).size.height,
           decoration: const BoxDecoration(
             image: DecorationImage(
-              image: AssetImage("assets/images/verification1.png"),
+              image: AssetImage("assets/imgs/verification1.png"),
               fit: BoxFit.fill,
             ),
           ),
