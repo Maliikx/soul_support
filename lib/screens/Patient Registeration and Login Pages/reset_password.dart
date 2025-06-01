@@ -84,7 +84,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
               height: screenHeight,
               decoration: const BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage("assets/images/verification1.png"),
+                  image: AssetImage("assets/imgs/verification1.png"),
                   fit: BoxFit.cover,
                 ),
               ),
