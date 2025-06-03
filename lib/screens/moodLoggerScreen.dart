@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:hive/hive.dart';
 import 'package:soul_support/main.dart';
 import 'package:soul_support/widgets/moodLoggerFaces.dart';
+import 'package:hive/hive.dart';
+
 
 class MoodLoggerScreen extends StatefulWidget {
   const MoodLoggerScreen({super.key});
@@ -14,16 +15,17 @@ class _MoodLoggerScreenState extends State<MoodLoggerScreen> {
   TextEditingController controller = TextEditingController();
   double yOffset = 0;
 
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: MediaQuery.of(context).size.height * 0.85,
-      child: Scaffold(
+     return Container(
+      //  height: MediaQuery.of(context).size.height * 0.85,
+       child: Scaffold(
         backgroundColor: primary,
         resizeToAvoidBottomInset: true,
         body: Stack(
           children: [
-            // Background Decorations
+            // Background Decorations (unchanged)
             Positioned(
               top: 120,
               right: -150,
@@ -70,7 +72,7 @@ class _MoodLoggerScreenState extends State<MoodLoggerScreen> {
                 ),
               ),
             ),
-
+       
             // Main Content
             SingleChildScrollView(
               padding: EdgeInsets.only(
@@ -98,7 +100,7 @@ class _MoodLoggerScreenState extends State<MoodLoggerScreen> {
                     ),
                   ),
                   SizedBox(height: 40),
-
+                   
                   ClipRRect(
                     borderRadius: BorderRadius.circular(200),
                     child: Container(
@@ -123,7 +125,7 @@ class _MoodLoggerScreenState extends State<MoodLoggerScreen> {
                     ),
                   ),
                   SizedBox(height: 40),
-
+                   
                   Text(
                     "Describe your feeling",
                     style: TextStyle(
@@ -133,7 +135,7 @@ class _MoodLoggerScreenState extends State<MoodLoggerScreen> {
                     ),
                   ),
                   SizedBox(height: 20),
-
+                   
                   ClipRRect(
                     borderRadius: BorderRadius.circular(20),
                     child: TextField(
@@ -143,13 +145,12 @@ class _MoodLoggerScreenState extends State<MoodLoggerScreen> {
                         filled: true,
                         fillColor: Colors.white,
                         contentPadding: EdgeInsets.all(12),
-                        hintText: "I'm feeling happy...",
+                        hintText: "I\'m feeling happy...",
                       ),
                     ),
                   ),
                   SizedBox(height: 20),
-
-                  // Save Button
+                   
                   GestureDetector(
                     onTap: () async {
                       if (controller.text.trim().isEmpty) {
@@ -187,7 +188,7 @@ class _MoodLoggerScreenState extends State<MoodLoggerScreen> {
             ),
           ],
         ),
-      ),
-    );
+       ),
+     );
   }
 }

@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:soul_support/cubits/note%20cubit/note_cubit.dart';
 import 'package:soul_support/main.dart';
 import 'package:soul_support/screens/noteWritingScreen.dart';
 import 'package:soul_support/transitions/custom_transitions.dart';
 import 'package:soul_support/widgets/exitBtn.dart';
-import 'package:soul_support/widgets/note.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:soul_support/widgets/noteList.dart';
+
 
 
 class JournalScreen extends StatefulWidget {
@@ -16,37 +19,15 @@ class JournalScreen extends StatefulWidget {
 class _JournalScreenState extends State<JournalScreen> {
 
    List<Widget> notes = [];
- 
-  void addNote() async {
-  final result = await Navigator.push(
-    context,
-     partialSlideBtT( NoteWritingScreen()),
-    
-  );
 
-  if (result != null && result is Map) {
-    setState(() {
-
-      notes.add(
-        
-        Note(
-          title: result['title'],
-          content: result['content'],
-          date: result['date'],
-
-        ),
-      );
-    });
-
-  }
-}
 
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
    
-    return Scaffold(
+    return 
+    Scaffold(
       body: Stack(
         children: [
           Positioned(
@@ -87,7 +68,7 @@ class _JournalScreenState extends State<JournalScreen> {
                       ),
             )
             ),
-
+    
             Container(
               height: screenHeight,
               child: SingleChildScrollView(
@@ -125,24 +106,12 @@ class _JournalScreenState extends State<JournalScreen> {
                         ),)
                         ),
                      SizedBox(height: 30,),
-                        Container(
-                          width: double.infinity,
-                          padding: EdgeInsets.symmetric(horizontal: 15),
-                          child: Wrap(
-                            alignment: WrapAlignment.spaceBetween,
-                            runSpacing: 20,
-                            children: notes,
-                          ),
-                        ),
+                        notesList(),
                     ],
                   ),
                 ),
               ),
             ),
-            
-
-
-
             Exitbtn(),
         ],
       ),
@@ -154,10 +123,23 @@ class _JournalScreenState extends State<JournalScreen> {
                 backgroundColor: primary,
                 foregroundColor: Colors.white,
                 shape: CircleBorder(),
+                  onPressed: (){
+              showModalBottomSheet(
+                    backgroundColor: Colors.transparent,
+                        isScrollControlled: true,
+              
+                    context: context, 
+                    builder: (context){
+                      return FractionallySizedBox(
+                        heightFactor: 0.9,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
+                          child: NoteWritingScreen()));
+                        });
+                    
+                    },
+                  // addNote,
                 
-                  onPressed: addNote,
-
-
                   child: Icon(Icons.add_circle_outline,size: 45,),
                 ),
        ),
