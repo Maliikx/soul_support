@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:soul_support/cubits/note%20cubit/note_cubit.dart';
 import 'package:soul_support/data/note_model.dart';
@@ -38,7 +39,7 @@ Future<void> main() async {
   final InitializationSettings initializationSettings = InitializationSettings(android: initializationSettingsAndroid);
 
   await flutterLocalNotificationsPlugin.initialize(initializationSettings);
-  SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: [SystemUiOverlay.bottom]);
+  // SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: [SystemUiOverlay.bottom]);
 
 
   WidgetsFlutterBinding.ensureInitialized();
@@ -61,7 +62,6 @@ class MyApp extends StatelessWidget {
     return  BlocProvider(
       create: (context) => NoteCubit(),
       child: MaterialApp(
-        
         debugShowCheckedModeBanner: false,
         theme: ThemeData(scaffoldBackgroundColor: background),
         initialRoute: '/start',

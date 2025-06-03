@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
+import 'package:soul_support/widgets/exitBtn.dart';
 
 class moodrecord_screen extends StatefulWidget {
   const moodrecord_screen({super.key});
@@ -70,6 +71,7 @@ class _moodrecord_screenState extends State<moodrecord_screen> {
               ),
             ),
           ),
+          Exitbtn()
         ],
       ),
     );
