@@ -19,6 +19,8 @@ import 'package:soul_support/screens/therapistScreen.dart';
 import 'package:soul_support/simpleObserver.dart';
 import 'package:soul_support/widgets/dock.dart';
 import 'package:soul_support/widgets/screenWrapper.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+
    const Color primary = Color(0xFF01709A);
    const Color accent = Color(0xFF97CADB);
    const Color background = Color(0xFFD6E8EE);
@@ -45,6 +47,7 @@ Future<void> main() async {
   await Hive.initFlutter();
   Hive.registerAdapter(NoteModelAdapter());
   await Hive.openBox<NoteModel>(notesBoxKey);
+  await Hive.openBox('myBox');
 
   runApp(const MyApp());
 }
@@ -61,7 +64,7 @@ class MyApp extends StatelessWidget {
         
         debugShowCheckedModeBanner: false,
         theme: ThemeData(scaffoldBackgroundColor: background),
-        initialRoute: '/home',
+        initialRoute: '/start',
         routes: {
           '/home': (context)=> ScreenWrapper(child: HomeScreen()),
           '/program': (context)=> ScreenWrapper(child: ProgramScreen()),

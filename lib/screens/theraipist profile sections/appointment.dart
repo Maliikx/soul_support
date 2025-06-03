@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'dart:io';
+import 'package:hive/hive.dart';
 
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -74,13 +75,24 @@ class _HorizontalMonthCalendarState extends State<Appointment> {
 
   //male and female
   String selectedGender = '';
+  String? _email;
 
   void selectGender(String gender) {
     setState(() {
       selectedGender = gender;
     });
   }
-
+ void initState() {
+    super.initState();
+    _loadEmail();
+  }
+  Future<void> _loadEmail() async {
+  var box = Hive.box('myBox');
+    setState(() {
+      _email = box.get('username');
+    });
+  
+  }
 // to save the appointment details
   TextEditingController nameController = TextEditingController();
   TextEditingController ageController = TextEditingController();
@@ -90,7 +102,7 @@ class _HorizontalMonthCalendarState extends State<Appointment> {
 
   void saveAppointment() {
     setState(() {
-      patient.name = nameController.text;
+      patient.name = _email!;
       patient.age = int.tryParse(ageController.text) ?? 0;
       patient.gender = selectedGender;
       patient.date = DateFormat.yMMMd().format(selectedDay);
@@ -318,27 +330,38 @@ class _HorizontalMonthCalendarState extends State<Appointment> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
+
                                   Text("Full Name",
                                       style: TextStyle(
                                         fontSize: 14,
                                         color: Color(0xFF01709A),
                                         fontWeight: FontWeight.w600,
                                       )),
-                                  TextField(
-                                    controller: nameController,
-                                    decoration: InputDecoration(
-                                      hintText: "Enter Your name",
-                                      hintStyle: TextStyle(color: Color(0xFF589FBA)),
-                                      border: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(13),
-                                        borderSide: BorderSide.none,
+                                      Padding(
+                                        padding: const EdgeInsets.only(left: 12.0),
+                                        child: Text("$_email",
+                                        style: TextStyle(
+                                          fontSize: 17,
+                                          color: Color.fromARGB(255, 1, 13, 17),
+                                          fontWeight: FontWeight.w600,
+                                        )),
                                       ),
-                                      filled: true,
-                                      fillColor: Colors.white,
-                                      contentPadding: EdgeInsets.symmetric(
-                                          vertical: 15, horizontal: 20),
-                                    ),
-                                  ),
+
+                                  // TextField(
+                                  //   controller: nameController,
+                                  //   decoration: InputDecoration(
+                                  //     hintText: "$_email",
+                                  //     hintStyle: TextStyle(color: Color(0xFF589FBA)),
+                                  //     border: OutlineInputBorder(
+                                  //       borderRadius: BorderRadius.circular(13),
+                                  //       borderSide: BorderSide.none,
+                                  //     ),
+                                  //     filled: true,
+                                  //     fillColor: Colors.white,
+                                  //     contentPadding: EdgeInsets.symmetric(
+                                  //         vertical: 15, horizontal: 20),
+                                  //   ),
+                                  // ),
                                   Text("Age",
                                       style: TextStyle(
                                         fontSize: 14,

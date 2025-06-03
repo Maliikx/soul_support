@@ -12,6 +12,7 @@ class AvailabletherapistsCard extends StatefulWidget {
   final double width;
   final String imgPath;
   final VoidCallback? onTap;
+  final String email;
   const AvailabletherapistsCard({
     required this.name,
     required this.time,
@@ -20,7 +21,8 @@ class AvailabletherapistsCard extends StatefulWidget {
     required this.width,
     required this.imgPath,
     this.onTap,
-    super.key});
+    super.key,
+    required this.email});
 
   @override
   State<AvailabletherapistsCard> createState() => _AvailabletherapistsCardState();
@@ -31,71 +33,71 @@ class _AvailabletherapistsCardState extends State<AvailabletherapistsCard> {
   Widget build(BuildContext context) {
     return  GestureDetector(
       onTap:() {
-        Navigator.push(context, 
-                            slideRtL(ScreenWrapper(child: TherapistProfile( name: widget.name, imgPath: widget.imgPath,)))
-                            );
+        Navigator.push(context,
+            slideRtL(ScreenWrapper(child: TherapistProfile( email: 'sama')))
+        );
       },
       child: Container(
-                height: widget.height,//110
-                width: widget.width,//280
-                decoration: BoxDecoration(
-                  color: widget.color, //Color.fromARGB(153, 255, 255, 255)
-                  borderRadius: BorderRadius.circular(30)
-                ),
-                child: Row(
-                  children: [
-                    Stack(
-                      children: [
-                        Container(
-                          height: 110,
-                          width: 120,
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.only(topLeft: Radius.circular(30), bottomLeft: Radius.circular(30)),
-                            child: Image.asset(widget.imgPath,
-                            fit: BoxFit.cover,
-                            alignment: Alignment(0.7, 0),
-                            ),
-                          ),
-                        ),
-                        Transform.translate(
-                          offset: Offset(85, 0),
-                          child: Container(
-                                height: 110,
-                                width: 35,
-                                decoration: BoxDecoration(
-                                  gradient: LinearGradient(colors: [widget.color, const Color.fromARGB(0, 255, 255, 255)],
-                                  begin: Alignment.centerRight,
-                                  end: Alignment.centerLeft,
-                                  stops: [0.4, 0.9],
-                                  ),
-                          
-                                ),
-                          ),
-                        ),
-                      ],
+        height: widget.height,//110
+        width: widget.width,//280
+        decoration: BoxDecoration(
+            color: widget.color, //Color.fromARGB(153, 255, 255, 255)
+            borderRadius: BorderRadius.circular(30)
+        ),
+        child: Row(
+          children: [
+            Stack(
+              children: [
+                Container(
+                  height: 110,
+                  width: 120,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.only(topLeft: Radius.circular(30), bottomLeft: Radius.circular(30)),
+                    child: Image.asset(widget.imgPath,
+                      fit: BoxFit.cover,
+                      alignment: Alignment(0.7, 0),
                     ),
-                    SizedBox(
-                      width: 5,
-                    ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                      Text(widget.name,
-                       style: TextStyle(fontSize: 16,
-                       fontWeight: FontWeight.bold,
-                       color: primary,
-                       ), ),
-                      Text("Therapist",
-                      style: TextStyle(
-                       fontWeight: FontWeight.w300,
-                       ),),
-                       SizedBox(height: 5,),
-                      Text(widget.time),
-                    ],)
-                  ],
+                  ),
                 ),
-         ),
+                Transform.translate(
+                  offset: Offset(85, 0),
+                  child: Container(
+                    height: 110,
+                    width: 35,
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(colors: [widget.color, const Color.fromARGB(0, 255, 255, 255)],
+                        begin: Alignment.centerRight,
+                        end: Alignment.centerLeft,
+                        stops: [0.4, 0.9],
+                      ),
+
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(
+              width: 5,
+            ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(widget.name,
+                  style: TextStyle(fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: primary,
+                  ), ),
+                Text("Therapist",
+                  style: TextStyle(
+                    fontWeight: FontWeight.w300,
+                  ),),
+                SizedBox(height: 5,),
+                Text(widget.time),
+              ],)
+          ],
+        ),
+      ),
     );
   }
 }

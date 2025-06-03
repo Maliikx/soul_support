@@ -13,6 +13,7 @@ import 'package:soul_support/widgets/screenWrapper.dart';
 import 'package:soul_support/widgets/testBanner.dart';
 import 'package:soul_support/widgets/topBanner.dart';
 
+import 'package:soul_support/therapistName/namesrow.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -93,9 +94,9 @@ class _HomeScreenState extends State<HomeScreen> {
                             children: [
                               HeaderCard(height: 140, width: 165, text: 'Therapist',
                                   onTap: () => {
-                                    Navigator.pushReplacement(context,
-                                      fadeTransition(ScreenWrapper(child: const TherapistScreen())),
-
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(builder: (context) => const TherapistScreen()),
                                     )
                                   },
                                   imgPath: 'assets/imgs/doc1.jpeg'),
@@ -109,13 +110,20 @@ class _HomeScreenState extends State<HomeScreen> {
                                     )
                                   },
                                   imgPath: 'assets/imgs/documetaion.png'),
+
+
                               SizedBox(
                                 width: 20,
                               ),
                               HeaderCard(height: 140, width: 165, text: 'Community',
                                   onTap: () => {
-                                    Navigator.push(context,
-                                        slideBtT(ScreenWrapper(child: const CommunityScreen(patientId:2,))))
+                                    //       Navigator.push(context,
+                                    //  slideBtT(ScreenWrapper(child: const CommunityScreen(patientId: 2,))))
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(builder: (context) => const  CommunityScreen(patientId: 2,)),
+                                    )
+
                                   },
                                   imgPath: 'assets/imgs/community.jpeg'),
                             ],
@@ -145,29 +153,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       SingleChildScrollView(
                         scrollDirection: Axis.horizontal,
                         child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 15),
-                          child: Row(
-
-                            children: [
-                              AvailabletherapistsCard(
-                                name: 'Dr. Ethar Ayman',
-                                time: 'Today, 08:00 : 12:00 ',
-                                height: 110,
-                                width: 280,
-                                color: Color.fromARGB(153, 255, 255, 255),
-                                imgPath: "assets/imgs/doc2.jpeg",),
-                              SizedBox(
-                                width: 20,
-                              ),
-                              AvailabletherapistsCard(
-                                name: 'Dr. Mark Williams',
-                                time: 'Today, 08:00 : 12:00 ',
-                                height: 110,
-                                width: 280,
-                                color: Color.fromARGB(153, 255, 255, 255),
-                                imgPath: "assets/imgs/doc1.jpeg",),
-                            ],
-                          ),
+                            padding: const EdgeInsets.symmetric(horizontal: 15),
+                            child:Namesrow()
                         ),
                       ),
                       SizedBox(height: 30,),
@@ -226,11 +213,13 @@ class _HomeScreenState extends State<HomeScreen> {
                     width: 240,
 
                     decoration: BoxDecoration(
-                        boxShadow: [BoxShadow(color: Colors.black.withAlpha(70),
-                            spreadRadius: 0,
-                            blurRadius: 4,
-                            offset: Offset(0 , 4)
-                        )],
+                        boxShadow: [
+                          BoxShadow(color: Colors.black.withAlpha(70),
+                              spreadRadius: 0,
+                              blurRadius: 4,
+
+                              offset: Offset(0 , 4)
+                          )],
                         color: Colors.white,
                         borderRadius: BorderRadiusDirectional.circular(200)
                     ),
