@@ -111,8 +111,8 @@ class _setting_screenState extends State<setting_screen> {
                   height: 150,
                   child:Image.asset(
                     (gender ?? "male").toLowerCase() == "female"
-                        ?"assets/imgs/profilePicture.png"
-                        :  "assets/imgs/logo_girl.png",
+                        ?  "assets/imgs/logo_girl.png"
+                        :"assets/imgs/profilePicture.png",
                   ),
                 ),
                 Column(
@@ -259,24 +259,38 @@ class _setting_screenState extends State<setting_screen> {
                         icon: CupertinoIcons.delete_simple,
                         title: "Delete Account ",
                         onTap: () {
-                          Navigator.push(
-                            context,
-                            smallSlideBtT(
-                              delete_screen(patientId: 22),
-                            ),
-                          );
+                          showModalBottomSheet(
+                                    backgroundColor: Colors.transparent,
+                                    context: context, 
+                                    builder: (context){
+                                      return FractionallySizedBox(
+                                        heightFactor: 0.4,
+                                        child: ClipRRect(
+                                          borderRadius: BorderRadius.vertical(top: Radius.circular(50)),
+                                          child: delete_screen(patientId: 22,)));
+                                    });     
                         },
                       ),
                       SettingItem(
                         icon: CupertinoIcons.share_up,
                         title: "Log Out ",
                         onTap: () {
-                          Navigator.push(
-                            context,
-                            smallSlideBtT(
-                              logout_screen(),
-                            ),
-                          );
+                        showModalBottomSheet(
+                                    backgroundColor: Colors.transparent,
+                                    context: context, 
+                                    builder: (context){
+                                      return FractionallySizedBox(
+                                        heightFactor: 0.4,
+                                        child: ClipRRect(
+                                          borderRadius: BorderRadius.vertical(top: Radius.circular(50)),
+                                          child: logout_screen()));
+                                    });     
+                          //Navigator.push(
+                          //   context,
+                          //   smallSlideBtT(
+                          //     logout_screen(),
+                          //   ),
+                          // );
                         },
                       ),
                     ],

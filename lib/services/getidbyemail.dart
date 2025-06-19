@@ -1,10 +1,12 @@
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
+import 'package:soul_support/constants/constants.dart';
+
 class patient {
-  static const baseUrl = "http://192.168.124.134:3000/api/";
+  static const _baseUrl = "$baseUrl/api/";
   static Future<int> getpatientId(String email) async {
-    var url = Uri.parse("${baseUrl}getPatient_id");
+    var url = Uri.parse("${_baseUrl}getPatient_id");
 
     try {
       final res = await http.post(

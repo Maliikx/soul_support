@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:soul_support/constants/constants.dart';
 import 'dart:convert';
 import 'dart:async';
-import '../Therapist Registeration and Login Pages/Therapist_Welcome.dart';
+import '../Therapist system Pages/therapistWelcomeScreen.dart';
 import 'reset_password.dart';
 import 'account_created_successfully.dart';
 
@@ -87,7 +88,7 @@ class _VerificationScreenState extends State<EmailVerificationScreen> {
     });
 
     try {
-      final url = Uri.parse("http://192.168.124.134:3000/patient/resend-otp");
+      final url = Uri.parse("$baseUrl/patient/resend-otp");
       final response = await http.post(
         url,
         headers: {"Content-Type": "application/json"},
@@ -144,7 +145,7 @@ class _VerificationScreenState extends State<EmailVerificationScreen> {
     });
 
     try {
-      final url = Uri.parse("http://192.168.124.134:3000/patient/verify-otp");
+      final url = Uri.parse("$baseUrl/patient/verify-otp");
       final response = await http.post(
         url,
         headers: {"Content-Type": "application/json"},

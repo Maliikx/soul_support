@@ -103,15 +103,15 @@ class _MusicCardState extends State<MusicCard> {
                   ),
                  
                 ],)),
-                 GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      scaleFactor = 1.5;
-                    });
-                  },
-                   child: Positioned(
-                    bottom: 60,
-                    right: 20,
+                 Positioned(
+                   bottom: 60,
+                   right: 20,
+                   child: GestureDetector(
+                     onTap: () {
+                      setState(() {
+                        scaleFactor = 1.5;
+                      });
+                    },
                      child: Icon(Icons.play_circle_fill_rounded,
                       size: 70,
                       color: primary,

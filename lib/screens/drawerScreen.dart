@@ -13,7 +13,8 @@ import 'package:soul_support/widgets/screenWrapper.dart';
 
 class DrawerScreen extends StatefulWidget {
 
-  const DrawerScreen({super.key});
+
+  const DrawerScreen({super.key,});
 
   @override
   State<DrawerScreen> createState() => _DrawerScreenState();
@@ -23,6 +24,8 @@ class DrawerScreen extends StatefulWidget {
 class _DrawerScreenState extends State<DrawerScreen> {
 
   String? username;
+    String? gender;
+
 
   @override
   void initState() {
@@ -32,9 +35,12 @@ class _DrawerScreenState extends State<DrawerScreen> {
 
   void loadUsername() async {
     var box = Hive.box('myBox');
+     String storedGender = box.get('gender', defaultValue: 'male');
     String storedUsername = box.get('username', defaultValue: 'Guest');
     setState(() {
       username = storedUsername;
+      gender = storedGender.trim().toLowerCase();
+
     });
   }
 
@@ -107,10 +113,14 @@ class _DrawerScreenState extends State<DrawerScreen> {
                         ),
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(50),
-                          child: Image.asset("assets/imgs/logo_girl.png",
-                              fit: BoxFit.cover,
-                              alignment: Alignment.topCenter
-                          ),
+                          child: Container(
+                              height: 150,
+                              child:Image.asset(
+                                (gender ?? "male").toLowerCase() == "female"
+                                    ?  "assets/imgs/logo_girl.png"
+                                    :"assets/imgs/profilePicture.png",
+                              ),
+                            ),
                         ),
                       ),
                       SizedBox(width: 10,),

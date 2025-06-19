@@ -4,6 +4,8 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:http/http.dart' as http;
+import 'package:soul_support/constants/constants.dart';
+import 'package:soul_support/widgets/exitBtn.dart';
 import 'package:timezone/data/latest.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
 
@@ -116,6 +118,7 @@ class _NotificationPageState extends State<NotificationPage> {
               ),
             ),
           ),
+          Exitbtn(),
         ],
       ),
     );
@@ -250,7 +253,7 @@ class _NotificationPageState extends State<NotificationPage> {
   Future<void> fetchAndNotify() async {
     try {
       final response = await http.get(
-        Uri.parse('http://192.168.124.134:3000/notification/patient/${widget.patientId}?screen=reminder'),
+        Uri.parse('$baseUrl/notification/patient/${widget.patientId}?screen=reminder'),
       );
 
 

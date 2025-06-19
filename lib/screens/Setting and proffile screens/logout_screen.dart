@@ -47,7 +47,7 @@ class _logout_screenState extends State<logout_screen> {
                   Navigator.pop(context);
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Color(0xffD6E8EE),
+                  backgroundColor: Color.fromARGB(255, 255, 255, 255),
                   padding: EdgeInsets.symmetric(horizontal: 30, vertical: 12),
                 ),
                 child: Text(

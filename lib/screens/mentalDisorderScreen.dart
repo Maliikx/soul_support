@@ -11,9 +11,12 @@ import 'package:soul_support/widgets/screenWrapper.dart';
 class MentalDisorderScreen extends StatefulWidget {
   final String title;
   final String description;
+  final String imgPath;
+
   const MentalDisorderScreen({
     required this.title,
     required this.description,
+    required this.imgPath,
     super.key});
 
   @override
@@ -107,7 +110,7 @@ class _MentalDisorderScreenState extends State<MentalDisorderScreen> {
                                child: Container(
                                 width: double.infinity,
                                 height: 200,
-                                child: Image.asset('assets/imgs/anxiety.jpg',
+                                child: Image.asset(widget.imgPath,
                                 fit: BoxFit.cover,
                                 )),
                              ),

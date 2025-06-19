@@ -209,7 +209,7 @@
  const sequelize = require('./database.js');
  const Patient = require('./models/Patient');
  const doctor = require('./models/Doctor');
- const pay=require("./models/Pay")
+ const pay=require("./models/pay")
  const session=require("./models/Session")
  const makesession=require('./models/MakeSession')
  const Do=require("./models/doexercise.js")
@@ -346,6 +346,9 @@ app.use('/api', musicRoutes);
 
  const idRoutes = require('./routes/getPatientId');
  app.use('/api', idRoutes);
+
+ const pay1 = require('./routes/pay');
+ app.use('/api', pay1);
 
  const server = http.createServer(app);
  const io = require('socket.io')(server);

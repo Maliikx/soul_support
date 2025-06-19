@@ -14,7 +14,9 @@ class Namesrow extends StatelessWidget {
       future: Api.getTherapist(),
       builder: (context, snapshot) {
         if (!snapshot.hasData) {
-          return const Center(child: CircularProgressIndicator());
+          return const Center(child: CircularProgressIndicator(
+            color: primary,
+            ));
         }
 
         final names = snapshot.data!;

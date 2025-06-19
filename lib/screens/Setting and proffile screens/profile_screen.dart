@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:hive/hive.dart';
 import 'package:soul_support/main.dart';
+import 'package:soul_support/screens/Setting%20and%20proffile%20screens/mood_record_screen.dart';
 import 'package:soul_support/screens/journalScreen.dart';
 import 'package:soul_support/widgets/exitBtn.dart';
 
 import '../../transitions/custom_transitions.dart';
 import '../../widgets/screenWrapper.dart';
-import 'mood_record_screen.dart';
 
 class profile_screen extends StatefulWidget {
   const profile_screen({super.key});
@@ -20,6 +20,8 @@ class profile_screen extends StatefulWidget {
 class _profile_screenState extends State<profile_screen> {
 
   String? username;
+  String? gender;
+
 
   @override
   void initState() {
@@ -29,9 +31,12 @@ class _profile_screenState extends State<profile_screen> {
 
   void loadUsername() async {
     var box = Hive.box('myBox');
+     String storedGender = box.get('gender', defaultValue: 'male');
     String storedUsername = box.get('username', defaultValue: 'Guest');
     setState(() {
       username = storedUsername;
+      gender = storedGender.trim().toLowerCase();
+
     });
   }
   @override
@@ -116,7 +121,14 @@ class _profile_screenState extends State<profile_screen> {
                     children: [
                       Container(
                           height: 100,
-                          child: Image(image: AssetImage("assets/imgs/logo_girl.png"))),
+                          child:  Container(
+                  height: 150,
+                  child:Image.asset(
+                    (gender ?? "male").toLowerCase() == "female"
+                        ?  "assets/imgs/logo_girl.png"
+                        :"assets/imgs/profilePicture.png",
+                  ),
+                ),),
                       // Text for greetings
                       Column(
                         children: [
@@ -226,99 +238,38 @@ class _profile_screenState extends State<profile_screen> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       // First item: Mood record
-                      Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(35),
-                          color: const Color(0xffFFFFFF),
-                        ),
-                        padding: EdgeInsets.symmetric(vertical: 10),
-                        width: 130,
-                        height: 130,
-                        child: GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              slideRtL(ScreenWrapper(child: moodrecord_screen())),
-                            );
-                          },
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              Container(
-                                height: 55,
-                                child: Image(image: AssetImage("assets/imgs/emoticons.png")),
-                              ),
-                              Text(
-                                "Mood Records",
-                                style: TextStyle(
-                                  color: Color(0xff374957),
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w400,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
+                      ProfileCard(
+                        name: "Mood Records",
+                        imgPath: "assets/imgs/emoticons.png",
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            slideRtL(ScreenWrapper(child: MoodRecordScreen())),
+                          );
+                        },
                       ),
 
                       // Second item: Diary record
-                      GestureDetector(
+                      ProfileCard(
+                        name: "Journal records",
+                        imgPath: "assets/imgs/paper.png",
                         onTap: () {
-                          Navigator.push(context, 
-                          slideRtL(ScreenWrapper(child: JournalScreen())));
+                          Navigator.push(
+                            context,
+                            slideRtL(ScreenWrapper(child: JournalScreen())),
+                          );
                         },
-                        child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(35),
-                            color: const Color(0xffFFFFFF),
-                          ),
-                          width: 130,
-                          height: 130,
-                          padding: EdgeInsets.symmetric(vertical: 10),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              Container(
-                                  height: 55,
-                                  child: Image(image: AssetImage("assets/imgs/paper.png"))),
-                              Text(
-                                "Journal records",
-                                style: TextStyle(
-                                  color: Color(0xff374957),
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w400,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
                       ),
+
+                      // Second item: Diary record
+                     
                       // Third item: Meditation
-                      Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(35),
-                          color: const Color(0xffFFFFFF),
-                        ),
-                        width: 130,
-                        height: 130,
-                        padding: EdgeInsets.symmetric(vertical: 10),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            Container(
-                                height: 55,
-                                child: Image(image: AssetImage("assets/imgs/yoga.png"))),
-                            Text(
-                              "Meditation",
-                              style: TextStyle(
-                                color: Color(0xff374957),
-                                fontSize: 14,
-                                fontWeight: FontWeight.w400,
-                              ),
-                            ),
-                          ],
-                        ),
+                       ProfileCard(
+                        name: "Meditation",
+                        imgPath: "assets/imgs/yoga.png",
+                       
                       ),
+                     
                     ],
                   ),
                 ),
@@ -331,5 +282,61 @@ class _profile_screenState extends State<profile_screen> {
       ),
     );
 
+  }
+}
+
+class ProfileCard extends StatefulWidget {
+  final void Function()? onTap;
+  final String imgPath;
+  final String name;
+
+  const ProfileCard({
+    super.key, 
+    this.onTap, required this.imgPath, required this.name,
+  });
+
+  @override
+  State<ProfileCard> createState() => _ProfileCardState();
+}
+
+class _ProfileCardState extends State<ProfileCard> {
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: widget.onTap,
+     
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(35),
+          color: const Color(0xffFFFFFF),
+        ),
+        padding: EdgeInsets.symmetric(vertical: 10),
+        width: 130,
+        height: 130,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            Container(
+              height: 55,
+              child: Image(image: AssetImage(
+                widget.imgPath
+                // "assets/imgs/emoticons.png"
+                
+                )),
+            ),
+            Text(
+              widget.name,
+              // "Mood Records",
+              style: TextStyle(
+                color: Color(0xff374957),
+                fontSize: 14,
+                fontWeight: FontWeight.w400,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }

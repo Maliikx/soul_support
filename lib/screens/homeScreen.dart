@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:soul_support/main.dart';
 import 'package:soul_support/screens/communityScreen.dart';
 import 'package:soul_support/screens/documentationScreen.dart';
 import 'package:soul_support/screens/therapistScreen.dart';
 import 'package:soul_support/transitions/custom_transitions.dart';
-import 'package:soul_support/widgets/availableTherapistsCard.dart';
 import 'package:soul_support/widgets/dock.dart';
 import 'package:soul_support/widgets/exerciseCard.dart';
 import 'package:soul_support/widgets/headerCard.dart';

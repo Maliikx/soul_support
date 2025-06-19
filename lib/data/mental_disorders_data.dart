@@ -8,6 +8,7 @@ List<Map<String, String>> mentalDisorders = [
       '\n__• Panic disorder__ experiencing panic attacks regularly (from a few times a day to a few times a year)\n'
       '\n__• Social anxiety disorder__ severe fear of social judgment that may cause avoidance of social situations\n'
       '\n__• Specific phobia__ a severe fear of a particular object or situation (e.g. spiders, heights, or flying)',
+    'imgPath':'assets/imgs/anxiety.jpg',
   },
   {
     'title': 'Bipolar and Related Disorders',
@@ -18,6 +19,7 @@ List<Map<String, String>> mentalDisorders = [
       '\n__• Bipolar I disorder__ featuring severe episodes of mania that may require hospitalization and typically depressive episodes as well\n'
       '\n__• Bipolar II disorder__ a pattern featuring episodes of hypomania (less severe than mania) and episodes of depression\n'
       '\n__• Cyclothymic disorder or cyclothymia__ a pattern of depressive and hypomanic symptoms that aren’t severe or long enough to qualify for a bipolar II disorder diagnosis',
+    'imgPath' : 'assets/imgs/md3.jpg'
   },
   {
     'title': 'Depressive Disorders',
@@ -29,6 +31,8 @@ List<Map<String, String>> mentalDisorders = [
       '\n__• Prenatal depression (during pregnancy) and postpartum depression (after childbirth):__ Together known as perinatal depression*\n'
       '\n__• Persistent depressive disorder (also known as dysthymia):__ Depressive symptoms less severe than in major depressive disorder, but may last longer (at least two years)\n'
       '\n__• Seasonal affective disorder (SAD):__ Depression recurring for a few months every year around the change of seasons (typically in winter)*',
+    'imgPath' : 'assets/imgs/md9.jpg'
+
   },
   {
     'title': 'Dissociative Disorders',
@@ -39,6 +43,8 @@ List<Map<String, String>> mentalDisorders = [
       '\n__• Dissociative identity disorder__ experiencing multiple independent identities in the same body, each with its own behaviors and memories\n'
       '\n__• Dissociative amnesia__ having large gaps in personal memories, often related to stressful or traumatic experiences\n'
       '\n__• Depersonalization/dercalization disorder__ persistently feeling removed from personal self and the environment',
+    'imgPath' : 'assets/imgs/md2.jpg'
+
   },
   {
     'title': 'Feeding and Eating Disorders',
@@ -49,12 +55,16 @@ List<Map<String, String>> mentalDisorders = [
       '\n__• Anorexia nervosa__ consistently restricting or avoiding food to lose weight, regardless of body weight\n'
       '\n__• Bulimia nervosa__ episodes of eating a lot of food followed by attempts to remove the food through behaviors like vomiting, fasting, or using laxatives\n'
       '\n__• Binge-eating disorder__ episodes of eating a lot of food, but without trying to remove the food',
+    'imgPath' : 'assets/imgs/md4.jpg'
+
   },
   {
     'title': 'Gender Dysphoria',
     'description': 
       'Gender dysphoria refers to psychological distress that results from a difference between one’s sex assigned at birth and one’s gender identity. It often begins in childhood, but some people may not experience it until after puberty or much later.\n'
       'Transgender people are individuals whose sex assigned at birth does not match their gender identity. Some transgender people experience gender dysphoria, and they may or may not change the way they dress or look to align with their felt gender.',
+    'imgPath' : 'assets/imgs/md7.jpg'
+
   },
   {
     'title': 'Neurocognitive Disorders',
@@ -65,6 +75,8 @@ List<Map<String, String>> mentalDisorders = [
       '• Delirium—typically a temporary and treatable state of confusion, disorientation, and difficulty thinking or remembering\n'
       '• Major neurocognitive disorder (dementia)—gradual and severe decrease in memory and thinking abilities, enough to interfere with daily activities\n'
       '• Mild neurocognitive disorder¹⁹—a decrease in memory and thinking abilities greater than expected for one’s age, but less severe than dementia',
+    'imgPath' : 'assets/imgs/md1.jpg'
+
   },
   {
     'title': 'Neurodevelopmental Disorders',
@@ -77,6 +89,8 @@ List<Map<String, String>> mentalDisorders = [
       '• Specific learning disorders\n'
       '• Communication disorders\n'
       '• Intellectual disability',
+    'imgPath' : 'assets/imgs/md15.jpg'
+
   },
   {
     'title': 'Obsessive-Compulsive and Related Disorders',
@@ -87,6 +101,8 @@ List<Map<String, String>> mentalDisorders = [
       '• Hoarding disorder—collecting too many items, resulting in clutter that is distressing and interferes with daily life\n'
       '• Body dysmorphic disorder (body dysmorphia)—excessive worry over one\'s appearance\n'
       '• Body-focused repetitive behaviors like excoriation (skin-picking) disorder and trichotillomania (hair-pulling disorder)',
+    'imgPath' : 'assets/imgs/md8.jpg'
+
   },
   {
     'title': 'Personality Disorders',
@@ -104,6 +120,8 @@ List<Map<String, String>> mentalDisorders = [
       '• Paranoid personality disorder—excessive fear and distrust of others\n'
       '• Schizoid personality disorder—strong preference for being alone\n'
       '• Schizotypal personality disorder—discomfort with relationships, along with odd behaviors and difficulties communicating',
+    'imgPath' : 'assets/imgs/md10.jpg'
+
   },
   {
     'title': 'Schizophrenia Spectrum and Other Psychotic Disorders',
@@ -114,6 +132,8 @@ List<Map<String, String>> mentalDisorders = [
       '• Delusional disorder—experiencing delusional thoughts for at least a month\n'
       '• Schizoaffective disorder—psychotic symptoms along with severe mood and behavior swings (a combination of schizophrenia and bipolar disorder symptoms)\n'
       '• Substance-induced psychotic disorder—psychotic symptoms induced by drugs such as cocaine',
+    'imgPath' : 'assets/imgs/md11.jpg'
+
   },
   {
     'title': 'Sleep-Wake Disorders',
@@ -125,12 +145,16 @@ List<Map<String, String>> mentalDisorders = [
       '• Parasomnias—odd behaviors around and during sleep time, including walking or talking\n'
       '• Narcolepsy—experiencing extreme daytime sleepiness and other sleep-related symptoms\n'
       '• Restless leg syndrome—tingling in your legs or a need to move your legs',
+    'imgPath' : 'assets/imgs/md12.jpg'
+
   },
   {
     'title': 'Substance-Related and Addictive Disorders',
     'description': 
       'This category includes substance use disorders (often referred to as substance abuse). They occur when a person continues the use of alcohol or another drug or substance despite significant substance-related problems.\n'
       'People with substance abuse disorders have an intense focus on using certain substances to the point where their ability to function in day-to-day life may become impaired.',
+    'imgPath' : 'assets/imgs/md13.jpg'
+
   },
   {
     'title': 'Trauma- and Stressor-Related Disorders',
@@ -142,5 +166,7 @@ List<Map<String, String>> mentalDisorders = [
       '• Adjustment disorder—severe mood and behavior symptoms such as nervousness, impulsivity, and sadness, following a stressful event\n'
       '• Reactive attachment disorder—difficulty connecting or being physically close with others, as well as experiencing positive emotions, due to childhood neglect or abuse\n'
       '• Disinhibited social engagement disorder—in children, wandering away from caregivers and excessive friendliness toward strangers',
+    'imgPath' : 'assets/imgs/md14.jpg'
+
   },
 ];

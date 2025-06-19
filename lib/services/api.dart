@@ -1,35 +1,16 @@
-// import 'dart:convert';
-// import 'package:flutter/foundation.dart';
-// import 'package:http/http.dart' as http;
-
-// class Api {
-//   static const baseUrl = "http://10.0.2.2:3000/api";
-//   static addTherapist(Map ddata) async {}
-//   static getTherapist() async {
-//     var url = Uri.parse("${baseUrl}get_therapistName");
-//     try {
-//       final res = await http.get(url);
-//       if (res.statusCode == 200) {
-//         var data = jsonDecode(res.body);
-//         print(data);
-//       } else {}
-//     } catch (e) {
-//       print(e.toString());
-//     }
-//   }
-// }
 
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:soul_support/constants/constants.dart';
 
 class Api {
-  static const baseUrl = "http://192.168.124.134:3000/api/";
+  static const _baseUrl = "$baseUrl/api/";
 
   static Future<void> addTherapist(Map<String, dynamic> ddata) async {}
 
   static Future<List<String>> getTherapist() async {
     List<String> product = [];
-    var url = Uri.parse("${baseUrl}get_therapistName");
+    var url = Uri.parse("${_baseUrl}get_therapistName");
 
     try {
       final res = await http.get(url);

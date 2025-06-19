@@ -2,6 +2,7 @@ import 'dart:convert';
 // import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:soul_support/constants/constants.dart';
 import '../drawerScreen.dart';
 import 'forgot_password.dart';
 import 'patient_sign_up.dart';
@@ -40,7 +41,7 @@ class _PatientSignInScreenState extends State<PatientSignInScreen> {
       final password = _passwordController.text;
 
       final response = await http.post(
-        Uri.parse('http://192.168.124.134:3000/patient/login'),
+        Uri.parse('$baseUrl/patient/login'),
         headers: {'Content-Type': 'application/json'},
         body: json.encode({'email': email, 'password': password}),
       );

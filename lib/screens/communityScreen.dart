@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:soul_support/constants/constants.dart';
 import 'package:soul_support/main.dart';
 import 'package:soul_support/widgets/exitBtn.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
@@ -252,7 +253,7 @@ class _CommunityScreenState extends State<CommunityScreen> {
   Future<void> fetchAndNotify() async {
     try {
       final response = await http.get(
-        Uri.parse('http://192.168.124.134:3000/notification/patient/${widget.patientId}?screen=event'),
+        Uri.parse('$baseUrl/notification/patient/${widget.patientId}?screen=event'),
       );
 
 

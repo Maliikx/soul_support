@@ -1,10 +1,12 @@
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
+import 'package:soul_support/constants/constants.dart';
+
 class doctorid {
-  static const baseUrl = "http://10.0.2.2:3000/api/";
+  static const _baseUrl = "$baseUrl/api/";
   static Future<int> getdoctorId(String name) async {
-  final url = Uri.parse("${baseUrl}getdoctor1_id?name=$name");
+  final url = Uri.parse("${_baseUrl}getdoctor1_id?name=$name");
 
   try {
     final res = await http.get(url); // Use GET

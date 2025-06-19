@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:http/http.dart' as http;
+import 'package:soul_support/constants/constants.dart';
 
 class delete_screen extends StatefulWidget {
   final dynamic patientId;
@@ -82,7 +83,7 @@ class _delete_screenState extends State<delete_screen> {
 
                     try {
                       final response = await http.delete(
-                        Uri.parse('http://192.168.124.134:3000/delete/patient/${widget.patientId}'),
+                        Uri.parse('$baseUrl/delete/patient/${widget.patientId}'),
                         headers: {
                           'Content-Type': 'application/json',
                           'Authorization': 'Bearer $token',

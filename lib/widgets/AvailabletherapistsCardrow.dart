@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:soul_support/main.dart';
 import 'package:soul_support/screens/therapistProfileScreen.dart';
-import 'package:soul_support/transitions/custom_transitions.dart';
-import 'package:soul_support/widgets/screenWrapper.dart';
 class AvailabletherapistsCardrow extends StatefulWidget {
   final String name;
   final String time;
@@ -34,13 +32,13 @@ class _AvailabletherapistsCardrowState extends State<AvailabletherapistsCardrow>
       onTap: (){
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => const TherapistProfile(email: "ranaKhater57@gmail.com",)),
+          MaterialPageRoute(builder: (context) => const TherapistProfile()),
         );
       },
       borderRadius: BorderRadius.circular(30),
       child: Container(
-        height: widget.height, // e.g., 110
-        width: widget.width,   // e.g., 280
+        height: widget.height, 
+        width: widget.width,   
         decoration: BoxDecoration(
           color: widget.color,
           borderRadius: BorderRadius.circular(30),

@@ -1,20 +1,11 @@
-
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
-
-import 'dart:math';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:soul_support/data/email.dart';
 import 'package:soul_support/main.dart';
 import 'package:soul_support/screens/theraipist%20profile%20sections/aboutDoctor.dart';
 import 'package:soul_support/screens/theraipist%20profile%20sections/chat.dart';
 import 'package:soul_support/screens/theraipist%20profile%20sections/review.dart';
 import 'package:soul_support/screens/theraipist%20profile%20sections/schedule.dart';
-import 'package:soul_support/services/getidbyemail.dart';
 import 'package:soul_support/widgets/dock.dart';
-import 'package:soul_support/widgets/doctorSwitchStatment.dart';
 import 'package:soul_support/widgets/exitBtn.dart';
 
 import '../video.dart';
@@ -22,8 +13,7 @@ import '../video.dart';
 class TherapistProfile extends StatefulWidget {
   // final String name;
   // final String imgPath;
-  final String email;
-  const TherapistProfile({super.key, required this.email});
+  const TherapistProfile({super.key,});
 
   @override
   State<TherapistProfile> createState() => TherapistProfileState();
@@ -51,16 +41,6 @@ class TherapistProfileState extends State<TherapistProfile> {
     });
   }
 
-  void _about() {
-    setState(() {
-      _currentPage = 1;
-      _pageController.animateToPage(
-        _currentPage,
-        duration: Duration(milliseconds: 500),
-        curve: Curves.easeInOut,
-      );
-    });
-  }
 
   void _aboutDoc() {
     setState(() {
@@ -188,7 +168,6 @@ class TherapistProfileState extends State<TherapistProfile> {
                   ),
                   GestureDetector(
                       onTap: ()  {
-                        // var id = await patient.getpatientId(widget.email);
                         Navigator.push(
                           context,
                           MaterialPageRoute(

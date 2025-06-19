@@ -12,7 +12,6 @@ class AvailabletherapistsCard extends StatefulWidget {
   final double width;
   final String imgPath;
   final VoidCallback? onTap;
-  final String email;
   const AvailabletherapistsCard({
     required this.name,
     required this.time,
@@ -22,7 +21,7 @@ class AvailabletherapistsCard extends StatefulWidget {
     required this.imgPath,
     this.onTap,
     super.key,
-    required this.email});
+    });
 
   @override
   State<AvailabletherapistsCard> createState() => _AvailabletherapistsCardState();
@@ -34,7 +33,7 @@ class _AvailabletherapistsCardState extends State<AvailabletherapistsCard> {
     return  GestureDetector(
       onTap:() {
         Navigator.push(context,
-            slideRtL(ScreenWrapper(child: TherapistProfile( email: 'sama')))
+            slideRtL(ScreenWrapper(child: TherapistProfile()))
         );
       },
       child: Container(

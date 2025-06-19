@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:soul_support/screens/Patient%20Registeration%20and%20Login%20Pages/Patient_Registeration_Options.dart';
-import 'package:soul_support/screens/Patient%20Registeration%20and%20Login%20Pages/Therapist_Registeration_Options.dart';
+import 'package:soul_support/screens/Therapist%20system%20Pages/Therapist_Registeration_Options.dart';
 import 'package:soul_support/transitions/custom_transitions.dart';
 import 'package:soul_support/widgets/screenWrapper.dart';
 class UserOptions extends StatelessWidget {

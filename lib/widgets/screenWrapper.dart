@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:soul_support/main.dart';
 import 'package:soul_support/screens/drawerScreen.dart';
+import 'package:soul_support/screens/tDrawerScreen.dart';
 
 class ScreenWrapper extends StatefulWidget {
+    final bool? isTherapist;
+
     final Widget child;
-  const ScreenWrapper({super.key, required this.child});
+  const ScreenWrapper({super.key, required this.child, this.isTherapist});
 
   @override
   State<ScreenWrapper> createState() => _ScreenWrapperState();
@@ -34,7 +37,7 @@ class _ScreenWrapperState extends State<ScreenWrapper> {
   Widget build(BuildContext context) {
    return Stack(
       children: [
-        DrawerScreen(),
+        widget.isTherapist == null ? DrawerScreen(): TDrawerScreen(),
         AnimatedContainer(
           duration: Duration(milliseconds: 250),
           curve: Curves.easeOut,

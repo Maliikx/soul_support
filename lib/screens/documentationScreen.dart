@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:soul_support/main.dart';
-import 'package:soul_support/screens/homeScreen.dart';
 import 'package:soul_support/screens/mentalDisorderScreen.dart';
 import 'package:soul_support/transitions/custom_transitions.dart';
-import 'package:soul_support/widgets/dock.dart';
 import 'package:soul_support/widgets/documentaionCard.dart';
 import 'package:soul_support/widgets/exitBtn.dart';
 import 'package:soul_support/widgets/screenWrapper.dart';
@@ -18,21 +16,6 @@ class DocumentationScreen extends StatefulWidget {
 }
 
 class _DocumentationScreenState extends State<DocumentationScreen> {
-  // final List<Map<String, String>> documentationData = [
-  // {
-  //   "title": "Anxiety Disorders",
-  //   "imgPath": "assets/imgs/docImg1.jpg"
-  // },
-  // {
-  //   "title": "Crazy Disorders",
-  //   "imgPath": "assets/imgs/docImg2.jpg"
-  // },
-  // {
-  //   "title": "Bipolar Disorders",
-  //   "imgPath": "assets/imgs/docImg2.jpg"
-  // },
-
-// ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -124,11 +107,11 @@ class _DocumentationScreenState extends State<DocumentationScreen> {
                                 child: GestureDetector(
                                   onTap: () {
                                     Navigator.push(context, 
-                                            slideRtL(ScreenWrapper(child: MentalDisorderScreen(title: mentalDisorders[i]["title"]!, description: mentalDisorders[i]["description"]!, ))));
+                                            slideRtL(ScreenWrapper(child: MentalDisorderScreen(title: mentalDisorders[i]["title"]!, description: mentalDisorders[i]["description"]!, imgPath: mentalDisorders[i]["imgPath"]!,))));
                                           },                                  
                                   child: DocumentaionCard(
                                     title: mentalDisorders[i]["title"]!,
-                                    imgPath: "assets/imgs/anxiety.jpg",
+                                    imgPath: mentalDisorders[i]["imgPath"]!,
                                   ),
                                 )
                               ),

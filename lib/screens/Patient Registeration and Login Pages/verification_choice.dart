@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:soul_support/constants/constants.dart';
 import 'dart:convert';
 import 'email_verification.dart';
 import 'phone_number_code.dart';
@@ -34,7 +35,7 @@ class _VerificationChoiceScreenState extends State<VerificationChoiceScreen> {
     });
 
     try {
-      final url = Uri.parse("http://192.168.23.152:3000/patient/register");
+      final url = Uri.parse("$baseUrl/patient/register");
       final response = await http.post(
         url,
         headers: {"Content-Type": "application/json"},

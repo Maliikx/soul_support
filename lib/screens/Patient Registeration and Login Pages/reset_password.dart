@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http; // Import HTTP package
+import 'package:soul_support/constants/constants.dart';
 import 'dart:convert';
 
 import 'package:soul_support/screens/Patient%20Registeration%20and%20Login%20Pages/password_changed.dart'; // Import for JSON encoding
@@ -40,7 +41,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
 
       // Sending the new password to the backend
       final response = await http.post(
-        Uri.parse('http://192.168.23.152:3000/patient/reset-password/${widget.token}'),
+        Uri.parse('$baseUrl/patient/reset-password/${widget.token}'),
         headers: {
           'Content-Type': 'application/json',
         },

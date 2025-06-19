@@ -1,10 +1,8 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:soul_support/data/music_data.dart';
 import 'package:soul_support/main.dart';
 import 'package:soul_support/widgets/exitBtn.dart';
-import 'dart:math';
 
 import 'package:soul_support/widgets/musicCard.dart';
 

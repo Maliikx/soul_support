@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:intl/intl.dart';
 import 'package:socket_io_client/socket_io_client.dart' as IO;
+import 'package:soul_support/constants/constants.dart';
 import 'package:soul_support/main.dart';
 import 'package:soul_support/screens/therapistProfileScreen.dart';
 
@@ -44,7 +45,7 @@ class _ChatState extends State<Chat> {
 
   void initTheSocket() {
     socket = IO.io(
-      'http://192.168.124.134:3000',
+      '$baseUrl',
       IO.OptionBuilder()
           .setTransports(['websocket'])
           .disableAutoConnect()

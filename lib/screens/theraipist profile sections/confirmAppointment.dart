@@ -7,6 +7,8 @@ import 'package:hive/hive.dart';
 
 // import 'package:url_launcher/url_launcher.dart';
 import 'package:http/http.dart' as http;
+import 'package:soul_support/constants/constants.dart';
+import 'package:soul_support/screens/Setting%20and%20proffile%20screens/paymop.dart';
 import 'package:soul_support/screens/theraipist%20profile%20sections/CancelAppointment.dart';
 import 'package:soul_support/services/getidbyemail.dart';
 import 'package:soul_support/services/getidbyname.dart';
@@ -14,17 +16,18 @@ import 'dart:convert';
 
 import 'package:soul_support/transitions/custom_transitions.dart';
 import 'package:soul_support/widgets/exitBtn.dart';
+import 'package:url_launcher/url_launcher.dart';
   Future<void> sendPayment({
   required int patientId,
   required int doctorId,
   required int amount,
   required String date,
 }) async {
-  const String url = "http://10.0.2.2:3000/api/pay";
+  const String _baseUrl = "$baseUrl/api/pay";
 
   try {
     final response = await http.post(
-      Uri.parse(url),
+      Uri.parse(_baseUrl),
       headers: {'Content-Type': 'application/json'},
       body: json.encode({
         "patient_id": patientId,
@@ -338,7 +341,7 @@ class _ConfirmappointmentState extends State<Confirmappointment> {
                     top: 20,
                   ),
                   child: ElevatedButton(
-                    onPressed: () async {
+                    onPressed: () async =>_pay(),
                       //                     Navigator.push(
                       //   context,
                       //   MaterialPageRoute(
@@ -353,7 +356,7 @@ class _ConfirmappointmentState extends State<Confirmappointment> {
                       //     ),
                       //   ),
                       // );
-                    },
+                    
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Color(0xFF0889B9),
                       shape: RoundedRectangleBorder(
@@ -405,38 +408,10 @@ class _ConfirmappointmentState extends State<Confirmappointment> {
       ),
     );
   }
-
-//   Future<void> fetchPaymentKey() async {
-//     final response = await http.post(
-//       Uri.parse("http://10.0.2.2:5000/pay"),
-//       headers: {"Content-Type": "application/json"},
-//       body: jsonEncode({"amount": 100, "currency": "EGP"}),
-//     );
-
-//     if (response.statusCode == 200) {
-//       final data = jsonDecode(response.body);
-//       print("Payment Key: ${data['paymentKey']}");
-//       openPaymentPage(data['paymentKey']);
-//     } else {
-//       print("Error: ${response.body}");
-//     }
-//   }
-//   void openPaymentPage(String paymentKey) async {
-//     String iframeId = "908571";
-//   String url =
-//     "https://accept.paymob.com/api/acceptance/iframes/$iframeId?payment_token=$paymentKey";
-
-//   if (Platform.isAndroid) {
-//     await Process.run("am", ["start", "-a", "android.intent.action.VIEW", "-d", url]);
-//   } else if (Platform.isIOS) {
-//     await Process.run("open", [url]);
-//   }
-// }
-
-  // Future<void> _pay() async {
-  //   Paymobmanager().getPaymentKey(100, "EGP").then((String paymentKey) {
-  //     launchUrl(Uri.parse(
-  //         "https://accept.paymob.com/api/acceptance/iframes/908572?payment_token=$paymentKey"));
-  //   });
-  // }
+Future<void> _pay() async {
+    PaymobManager().paywithPaymob(100).then((String paymentKey) {
+      launchUrl(Uri.parse(
+          "https://accept.paymob.com/api/acceptance/iframes/908572?payment_token=$paymentKey"));
+    });
+  }
 }

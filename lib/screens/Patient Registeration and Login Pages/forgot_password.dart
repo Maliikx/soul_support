@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:soul_support/constants/constants.dart';
 import 'patient_sign_in.dart';
 import 'package:http/http.dart' as http; // Import HTTP package
 import 'dart:convert';
@@ -30,7 +31,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
       final email = _emailController.text;
 
       final response = await http.post(
-        Uri.parse('http://192.168.23.152:3000/patient/forget-password'),
+        Uri.parse('$baseUrl/patient/forget-password'),
         headers: {'Content-Type': 'application/json'},
         body: json.encode({'email': email}),
       );

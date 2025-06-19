@@ -76,7 +76,7 @@ class _JournalScreenState extends State<JournalScreen> {
                 padding: EdgeInsets.only(bottom: 50),
                 child: Container(
                   width: double.infinity,
-                  
+              
                   padding: EdgeInsets.only( top: 50, ),
                   child: Column(
                     children: [

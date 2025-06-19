@@ -12,7 +12,9 @@ class TherapistList extends StatelessWidget {
       future: Api.getTherapist(),
       builder: (context, snapshot) {
         if (!snapshot.hasData) {
-          return const Center(child: CircularProgressIndicator());
+          return const Center(child: CircularProgressIndicator(
+            color: primary,
+          ));
         }
 
         final names = snapshot.data!;
@@ -39,7 +41,7 @@ class TherapistList extends StatelessWidget {
                 width: double.infinity,
                 color: Colors.white,
                 imgPath: "assets/imgs/doc2.jpeg",
-                email: "ranaKhater57@gmail.com",),
+                ),
             );
           }).toList(),
         );

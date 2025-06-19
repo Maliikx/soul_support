@@ -3,24 +3,22 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:provider/provider.dart';
 import 'package:soul_support/cubits/note%20cubit/note_cubit.dart';
 import 'package:soul_support/data/note_model.dart';
-import 'package:soul_support/screens/Patient%20Registeration%20and%20Login%20Pages/Patient_Registeration_Options.dart';
+import 'package:soul_support/providers/auth_provider.dart';
+import 'package:soul_support/providers/therapist_provider.dart';
 import 'package:soul_support/screens/Patient%20Registeration%20and%20Login%20Pages/User_Options.dart';
-import 'package:soul_support/screens/Patient%20Registeration%20and%20Login%20Pages/patient_sign_In.dart';
-import 'package:soul_support/screens/Patient%20Registeration%20and%20Login%20Pages/welcome.dart';
-import 'package:soul_support/screens/Therapist%20Registeration%20and%20Login%20Pages/Therapist_Welcome.dart';
-import 'package:soul_support/screens/documentationScreen.dart';
-import 'package:soul_support/screens/drawerScreen.dart';
+import 'package:soul_support/screens/Therapist%20system%20Pages/Therapist_Calender.dart';
+import 'package:soul_support/screens/Therapist%20system%20Pages/Therapist_Home.dart';
+import 'package:soul_support/screens/Therapist%20system%20Pages/Therapist_Settings.dart';
 import 'package:soul_support/screens/exerciseScreen.dart';
 import 'package:soul_support/screens/homeScreen.dart';
 import 'package:soul_support/screens/moodLoggerScreen.dart';
 import 'package:soul_support/screens/programScreen.dart';
 import 'package:soul_support/screens/therapistScreen.dart';
 import 'package:soul_support/simpleObserver.dart';
-import 'package:soul_support/widgets/dock.dart';
 import 'package:soul_support/widgets/screenWrapper.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
    const Color primary = Color(0xFF01709A);
    const Color accent = Color(0xFF97CADB);
@@ -71,6 +69,7 @@ class MyApp extends StatelessWidget {
           '/therapists': (context)=> ScreenWrapper(child: TherapistScreen()),
           '/exercises': (context)=> ScreenWrapper(child: ExerciseScreen()),
           '/start': (context)=>  UserOptions(),
+          '/start2': (context)=>  ScreenWrapper( isTherapist: true, child: TherapistHome(),),
           '/moodLogger': (context)=> MoodLoggerScreen(),
         },
         // home: Stack(
