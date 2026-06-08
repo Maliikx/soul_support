@@ -1,16 +1,55 @@
-# soul_support
+# 🧠 Soul Support
 
-A new Flutter project.
+**The first AI-powered mental health app in Egypt & the Middle East.**
 
-## Getting Started
+Soul Support is a Flutter application designed to provide intelligent,
+personalized mental health support — breaking the stigma surrounding 
+therapy and making mental wellness accessible, affordable, and secure.
 
-This project is a starting point for a Flutter application.
+---
 
-A few resources to get you started if this is your first Flutter project:
+## ✨ Features
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+| Feature | Available |
+|---|---|
+| AI-Powered Support | ✅ |
+| Mental Health Resources | ✅ |
+| Security | ✅ |
+| Therapist Professional Directory | ✅ |
+| Community Support | ✅ |
+| Mood Logging | ✅ |
+| Personalized Plans | ✅ |
+| Mental Health Statistics | ✅ |
+| Events | ✅ |
+| Journaling / Exercises | ✅ |
+| Music | ✅ |
+| Tests | ✅ |
+| VR Sessions | 🔜 Coming Soon |
+| Games | 🔜 Coming Soon |
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+---
+
+## 🛠️ Technologies Used
+- Flutter & Dart
+- Node.js
+- SQL Database
+- AI / Machine Learning integration
+---
+
+
+
+### Prerequisites
+- Flutter SDK installed → [Install Flutter](https://docs.flutter.dev/get-started/install)
+
+
+## 👥 Team
+
+| Name | GitHub |
+|---|---|
+| Abrar Ayman | — |
+| Rana Alaa | [@rana-alaa-abdelaziz](https://github.com/rana-alaa-abdelaziz) |
+| Sama Mohamed | — |
+| Anas Tarek | — |
+| Ahmed Haytham | — |
+
+---
